@@ -1,0 +1,558 @@
+.main_content{
+    float: left;
+    width: 100%;
+    background: while;
+}
+.main_content .container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(8, 156, 255);
+    width: 100%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.content_header{
+    margin-bottom: 20px;
+}
+.static_field{
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.static_field .header_,.tag_field .header_,.title_post{
+    background: linear-gradient(351deg,black,rgb(70, 70, 70));
+    padding: 5px 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.static_field .header_ span,.tag_field .header_ span,.title_post{
+    color: white;
+}
+.static_field .header_inner,.tag_field .header_inner{
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter_option{
+    margin-bottom: 30px;
+}
+.filter_ ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px 0px 10px 0px;
+}
+.filter_ li{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    border-bottom: 2px dotted gray;
+}
+.static_field .body_{
+    border: 1px solid gray;
+    padding: 3px;
+    display: block;
+    float: left;
+    width: 100%;
+}
+.border_db{
+    border: 1px solid gray;
+
+}
+
+.stt{
+    background-color: orange;
+    padding: 2px 5px;
+    line-height: 1;
+    font-size: 10px;
+}
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  margin-bottom: 20px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 6px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 5px 10px;
+}
+.left{
+    width: 27%;
+    float: left;
+    position: relative;
+}
+.right{
+    width: 72.5%;
+    float: right;
+    position: relative;
+}
+.active{
+    font-weight: 600;
+}
+.status_ span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+.status_ span:nth-child(1){
+    background-color: aqua;
+    line-height: 1;
+}
+.tag_field .body_ {
+    border: 1px solid gray;
+}
+.tag_field .header_body{
+    background: linear-gradient(to top,#043f71,rgb(15, 124, 197));
+}
+.header_body,.content_body li{
+    display: grid;
+    grid-template-columns: 10% 60% 5% 25%;
+}
+.content_body .icon_{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content_body ul{
+    padding: 0;
+}
+
+.header_body{
+    padding: 5px 0px;
+}
+.header_body span{
+    padding-left: 5px;
+    color:  white;
+    font-weight: 500;
+}
+.infor_{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header_inner{
+    cursor: pointer;
+}
+/* ---------------------------footer------------------------- */
+
+footer .container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background: linear-gradient(to top,#043f71,rgb(15, 124, 197));
+}
+.footer_content{
+    padding: 15px;
+}
+.footer_content a,.footer_content span{
+    color: white;
+}
+.footer_content a{
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.footer_content .header_{
+    margin-bottom: 20px;
+}
+
+/* -----------------------------------header--------------------- */
+body{
+    scroll-behavior: smooth;
+}
+
+
+.header-top{
+    background-color: black;
+    color: white;
+}
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.form-login {
+    margin: 0;
+}
+.form-login,.logo-wrapper{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.form-login input{
+    padding: 0px 7px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+}
+label{
+    margin: 0;
+}
+.form-login label{
+    padding-right: 5px;
+}
+
+.save-password{
+    padding: 0px 10px;
+}
+
+.btn-login{
+    outline: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.banner{
+    background: linear-gradient(to top,#043f71,rgb(15, 124, 197));
+}
+.banner .navbar{
+    background: linear-gradient(to top,#043f71,rgb(60, 124, 197));
+    border-radius: 25px;
+}
+.banner .navbar-brand,.nav-link{
+    color: white;
+}
+.nav-link {
+    font-weight: 600;
+    border-right: 1px ;
+}
+.nav-item{
+    padding: 0px 10px;
+}
+.dropdown-inner{
+    padding:  15px;
+}
+.dropdown-menu{
+    left: -300px;
+    width: 800px;
+    max-height: 300px;
+    overflow: auto;
+}
+.dropdown-menu ul{
+    list-style: none;
+}
+.dropdown-menu ul li{
+    display: inline-block;
+    margin-right: 15px;
+}
+.dropdown-content{
+    width: 100%;
+    margin: 0;
+}
+.dropdown-content a{
+    color: black;
+}
+
+/*-------------------welcome_banner----------------------------------*/
+.welcome_banner{
+    background-color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
+.welcome_banner .header_{
+    display: flex;
+}
+.welcome_banner .header_ span:first-child{
+    padding-right: 10px;
+}
+.welcome_banner .body_{
+    background-color: lightyellow;
+}
+.welcome_banner .body_inner{
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid greenyellow;
+}
+.form_search .header_ span{
+    padding-right: 10px;
+}
+.search_field{
+    display: grid;
+    grid-template-columns: 75% 20%;
+    grid-gap: 10px;
+}
+.search_field input{
+    padding: 5px 10px;
+    border: 1px solid gray;
+    outline: none;
+}
+.search_field button{
+    border: none;
+    outline: none;
+    background-color: gray;
+}
+.search_field button span{
+    vertical-align: bottom;
+    color: white;
+}
+
+/* ----------------------------------Blog Detail-------------------------- */
+.post_detail .container{
+    border-left: 1px solid rgb(201, 200, 200);
+    border-right: 1px solid rgb(201, 200, 200);
+    border-bottom: 1px solid rgb(201, 200, 200);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.page_number{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+.page_number div{
+    margin-right: 10px;
+}
+.page_ {
+    display: flex;
+}
+.page_ span{
+    background-color: rgb(247, 247, 247);
+    padding:0px 5px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+.number_ {
+    border: 1px solid gray;
+}
+.symbol_ span{
+    font-size: 20px;
+    padding: 0;
+}
+.title_post{
+    background: linear-gradient(351deg,black,rgb(70, 70, 70));
+    padding: 5px 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: white;
+}
+.title_post a{
+    color: white;
+    padding-left: 10px;
+    font-weight: 600;
+}
+.created_post{
+    background: linear-gradient(to top,#043f71,rgb(15, 124, 197));
+    color: white;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+.created_post span{
+    font-size: 13px;
+    vertical-align: middle;
+}
+.main_post{
+    display: grid;
+    grid-template-columns: 25% 74%;
+    grid-gap: 12px;
+    padding: 5px;
+}
+.info_user{
+    padding: 5px;
+    background-color: #E5E3E3;
+}
+.info_user .header_{
+    text-align: center;
+}
+.username h3,.nick_name{
+    text-align: center;
+    color: red;
+    font-weight: 700;
+}
+.username ,.nick_name ,.info_user .body_inner,.content_post .header_ {
+    background: linear-gradient(to top , #E5E3E3,white ,#E5E3E3);
+}
+.info_user .header_ .ava_{
+    background-color: #E5E3E3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.info_user .header_ .ava_ div{
+    padding: 5px;
+    background-color: white;
+}
+.body_inner{
+    border-radius: 15px;
+    padding: 5px;
+}
+.form_group{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    border-bottom: 1px dotted gray;
+}
+.main_post .info_user{
+    border-radius: 15px;
+}
+
+.content_post .header_{
+    padding: 5px 10px;
+}
+.content_post .header_ span{
+    vertical-align: middle;
+}
+.content_post .header_ .title_{
+    font-weight: 600;
+}
+.content_post .body_{
+    padding: 15px 5px;
+}
+.acb{
+    background-color: rgb(55, 68, 255);
+}
+.src_reply{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: rgb(230, 230, 230);
+    padding: 5px 10px;
+}
+.src_reply_wrapper{
+    display: flex;
+    align-items: center;
+}
+.src_reply_wrapper span{
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.list_cmt .heading_{
+    padding-left: 10px;
+    margin: 5px 0px;
+
+}
+.list_cmt .heading_wrapper{
+    background-color: rgb(230, 230, 230);
+    padding: 0px 5px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    font-weight: 600;
+}
+.content_cmt{
+    padding: 5px;
+    display: none;
+    transition: transform .5s ease;
+}
+
+/* ----------------------------------Register-------------------------- */
+.register_{
+    margin-bottom: 20px;
+}
+.register_ .container{
+    border: 1px solid blue;
+}
+.register_ input{
+    width: 300px;
+}
+.register_ .header_{
+    background: linear-gradient(351deg,black,rgb(70, 70, 70));
+    padding: 5px 10px;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.form-register{
+    padding: 10px 5px;
+}
+.title_{
+    font-weight: 600;
+    background-color: rgb(223, 219, 219);
+    padding: 2px 10px;
+}
+.form-register .body_{
+    padding: 10px 2px;
+    display: flex;
+    flex-direction: column;
+}
+.form-register .form-group{
+    width: 50%;
+    justify-content: space-between;
+}
+.label_{
+    display: flex;
+    align-items: center;
+}
+.select_sex{
+    width: 300px;
+}
+.btn_{
+    margin: 0 auto;
+
+}
+.btn_ button{
+    /* border: 1px solid rgb(53, 198, 255); */
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    background-color: rgb(39, 112, 207);
+    border-radius: 10px;
+    color:  white;
+}
+
+/* ----------------------------------Blog Post----------------------------- */
+.body_post .container{
+    border-left: 1px solid rgb(214, 214, 214);
+    border-right: 1px solid rgb(214, 214, 214);
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
+.body_post select{
+    outline: none;
+    border: 1px solid  rgb(214, 214, 214);
+    width: 50%;
+}
+.body_post .form-group{
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.btn_check{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.btn_check input{
+    width: 20px;
+}
+
+.btn_wrapper{
+    display: flex;
+}
+.btn_submit{
+    background-color:rgb(39, 112, 207);
+    color: white;
+    cursor: pointer;
+}
+
+/* ----------------------------------CKEditor----------------------------- */
+.ck-editor__editable {
+    min-height: 300px;
+    max-height: 300px;
+}
