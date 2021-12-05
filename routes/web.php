@@ -18,5 +18,7 @@ Route::get('/blog-detail/{blogId}', ['as'=>'blogDetail', 'uses'=>'BlogController
 Route::get('/blog-post', ['as'=>'blogPost', 'uses'=>'TagController@blogPost']);
 
 Route::post('/blog-post', ['as'=>'blogpostdone', 'uses'=>'BlogController@insert']);
+Route::post('/contact', ['as'=>'contactmail', 'uses'=>'MailController@sendMail']);
 
 Route::view('/register', 'register');
+Route::view('/contact', 'contact');
