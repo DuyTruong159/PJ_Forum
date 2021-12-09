@@ -41,4 +41,12 @@ class BlogController extends Controller
         return redirect(route('blogPost')) -> with('status', 'Success');
 
     }
+
+    public function search(Request $re)
+    {
+        $search = $re -> input('search');
+        $blog = Blog::where('Title', 'like', '%'.$search.'%') -> get();
+
+        return view('search', compact('blog'));
+    }
 }

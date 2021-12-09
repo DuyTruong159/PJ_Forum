@@ -5,22 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Blog;
-use App\Models\Comment;
 
-class User extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    protected $table = 'user';
+    protected $table = 'comment';
     public $timestamps = false;
 
     public function Blog()
     {
-        return $this -> hasMany(Blog::class, 'UserId', 'Id');
+        return $this -> belongsTo(Blog::class, 'BlogId', 'Id');
     }
 
     public function Comment()
     {
-        return $this -> hasMany(Comment::class, 'UserId', 'Id');
+        return $this -> belongsTo(Comment::class, 'UserId', 'Id');
     }
 }

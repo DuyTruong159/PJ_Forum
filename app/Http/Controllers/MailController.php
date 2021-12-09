@@ -10,6 +10,17 @@ class MailController extends Controller
 {
     public function sendMail(Request $re)
     {
+        $validated = $re -> validate([
+            'email' => 'required',
+            'message' => 'required',
+            'name' => 'required'
+        ],
+        [
+            'email.required' => 'Email không bỏ trống!!',
+            'message.required' => 'Message không bỏ trống!!',
+            'name.required' => 'Name không bỏ trống!!'
+        ]);
+
         $details = [
             'email' => $re -> input('email'),
             'name' => $re -> input('name'),

@@ -597,3 +597,16 @@ label{
     background-color:  rgb(39, 112, 207);
     color: white;
 }
+
+/* ----------------------------------Search----------------------------- */
+.search .item_{
+    border-top: 1px solid rgb(190, 190, 190);
+}
+.search ul{
+    margin: 0;
+}
+.search .container{
+    border-bottom: 1px solid rgb(190, 190, 190);
+    border-left: 1px solid rgb(190, 190, 190);
+    border-right: 1px solid rgb(190, 190, 190);
+}

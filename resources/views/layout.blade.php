@@ -123,7 +123,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <form class="form_search">
+                            <form class="form_search" action="{{route('blogSearch')}}">
                                 <div class="d-inline-flex header_ pb-3">
                                     <span class="material-icons-outlined ">
                                     desktop_windows
@@ -138,7 +138,7 @@
                                         </span>
                                     </button>
                                 </div>
-                                <a href="/search.php" class="d-block text-right">Kiếm Chi Tiết</a>
+                                <a href="/search" class="d-block text-right">Kiếm Chi Tiết</a>
                             </form>
                         </div>
                     </div>

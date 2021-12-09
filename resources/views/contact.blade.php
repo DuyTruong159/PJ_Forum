@@ -51,17 +51,25 @@
                         <div class="alert alert-success">
                             Gửi Mail thành công
                         </div>
+                    @elseif ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     @endif
                     <div class="form-group">
-                        <label for="email" class="mb-2">Email</label>
+                        <label for="email" class="mb-2">Email<i class="text-danger">*</i></label>
                         <input type="email" id="email" name="email" placeholder="Enter your email" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="name" class="mb-2">Name</label>
+                        <label for="name" class="mb-2">Name<i class="text-danger">*</i></label>
                         <input type="text" name="name" id="name" placeholder="Enter your name" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="message" class="mb-2">Message</label>
+                        <label for="message" class="mb-2">Message<i class="text-danger">*</i></label>
                         <textarea type="text" name="message" id="message" placeholder="Enter your message" style="height: 200px" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
