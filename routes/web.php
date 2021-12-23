@@ -17,12 +17,26 @@ Route::get('/', ['as'=>'home', 'uses'=>'TagController@index']);
 Route::get('/blog-detail/{blogId}', ['as'=>'blogDetail', 'uses'=>'BlogController@blogDetail']);
 Route::get('/blog-post', ['as'=>'blogPost', 'uses'=>'TagController@blogPost']);
 Route::get('/search', ['as'=>'blogSearch', 'uses'=>'BlogController@search']);
+Route::get('/tieude/{tagId}', ['as'=>'tagDetail', 'uses'=>'TagController@TagDetail']);
 
 Route::post('/blog-post', ['as'=>'blogpostdone', 'uses'=>'BlogController@insert']);
 Route::post('/contact', ['as'=>'contactmail', 'uses'=>'MailController@sendMail']);
 Route::post('/blog-detail/{blogId}', ['as'=>'commentsuccess', 'uses'=>'CommentController@insert']);
 Route::post('/register', ['as'=>'registerdone', 'uses'=>'UserController@insert']);
+Route::post('/', ['as'=>'login', 'uses'=>'UserController@login']);
 
 Route::view('/register', 'register');
 Route::view('/contact', 'contact');
+
+//-----------------Admin-----------------//
+Route::get('/admin/blog', ['as'=>'blogA', 'uses'=>'BlogController@blogAll']);
+Route::get('/admin/blog-post', ['as'=>'blogPostA', 'uses'=>'TagController@BlogA']);
+Route::get('/admin/blog-update/{blogId}', ['as'=>'blogUpdateA', 'uses'=>'BlogController@blogUpdate']);
+Route::get('/admin/tag', ['as'=>'tagA', 'uses'=>'TagController@TagA']);
+Route::get('/admin/comment', ['as'=>'commentA', 'uses'=>'CommentController@CommentA']);
+
+Route::post('/admin/blog-post', ['as'=>'blogPostAdone', 'uses'=>'BlogController@blogInsert']);
+Route::post('/admin/blog-update/{blogId}', ['as'=>'blogUpdateAdone', 'uses'=>'BlogController@blogUpdateDone']);
+
+Route::view('/admin', 'admin.layoutAdmin');
 

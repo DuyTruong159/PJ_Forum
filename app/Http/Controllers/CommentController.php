@@ -22,6 +22,13 @@ class CommentController extends Controller
         $comment->BlogId = $id;
         $comment->save();
 
-        return redirect(route('blogDetail', ['blogId'=>$id])) -> with('status', 'Success');
+        return redirect(route('blogDetail', ['blogId'=>$id])) -> with('status', 'CommentSuccess');
+    }
+
+//---------------------------BackEnd--------------------//
+    public function CommentA()
+    {
+        $comment = Comment::orderByDesc('Created_date')->paginate(10);
+        return view('admin.commentAdmin', compact('comment'));
     }
 }

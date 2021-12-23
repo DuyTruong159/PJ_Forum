@@ -24,14 +24,53 @@
 </head>
 <body class="grey lighten-4">
 
+    @if (session('status')=='Empty')
+    <div class="alert alert-danger alert-dismissible fade show position-fixed" style="left:1100px; top:30px; z-index: 2;" role="alert">
+        Không được để trống!!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @elseif (session('status')=='Success')
+    <div class="alert alert-success alert-dismissible fade show position-fixed" style="left:1150px; top:30px; z-index: 2;" role="alert">
+        Đăng nhập thành công!!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @elseif (session('status')=='Unsuccess')
+    <div class="alert alert-danger alert-dismissible fade show position-fixed" style="left:1100px; top:30px; z-index: 2;" role="alert">
+        Sai mật khẩu hoặc tên đăng nhập!!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
     <header class="header-top" id="header-top">
         <div class="container">
             <div class="header-wrapper">
                 <div class="logo-wrapper">
                     <a href="/"><span>Chao mung</span></a>
                 </div>
+                @if(Auth::check())
+                <div class="d-flex align-items-center " >
+                    <div class="avatar_">
+                        <img src="" alt="">
+                    </div>
+                    <div class="dropdown">
+                        <span class="dropbtn">Admin</span>
+                        <div class="dropdown-content">
+                            <a href="#">Profile</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                </div>
+                @else
                 <div class="loginarea">
-                    <form class="form-login" action="index.php" method="GET">
+                    <form class="form-login" action="{{route('login')}}" method="post">
+                        {{ csrf_field() }}
                         <label for="username">Login:</label>
                         <div class="">
                             <input type="text" name="username" id="username" placeholder="Username">
@@ -46,9 +85,9 @@
                                 Login
                             </button>
                         </div>
-
                     </form>
                 </div>
+                @endif
             </div>
         </div>
     </header>
@@ -63,7 +102,7 @@
                             <img src="../images/logo.jpg" alt="">
                         </a>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7" style="z-index: 1;">
                             <nav class="navbar navbar-expand-lg">
                                 <a class="navbar-brand" href="/">Trang chủ</a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,7 +123,7 @@
                                                 <div class="dropdown-content row">
                                                     @foreach ($tagHeader as $t)
                                                     <div class="col-md-3">
-                                                        <a href="">{{$t->Name}}</a>
+                                                        <a href="{{route('tagDetail', ['tagId'=>$t->Id])}}">{{$t->Name}}</a>
                                                     </div>
                                                     @endforeach
                                                 </div>

@@ -67,9 +67,9 @@
                         </li>
                         @endforeach
                     </ul>
-
                 </div>
             </div>
+            {{$blog->links()}}
         </div>
         </div>
     </div>

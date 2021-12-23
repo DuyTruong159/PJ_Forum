@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 
-@if (session('status')=='Success')
+@if (session('status')=='CommentSuccess')
 <div class="alert alert-success alert-dismissible fade show position-fixed" style="left:1150px; top:30px;" role="alert">
     Bình luận thành công!!
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
