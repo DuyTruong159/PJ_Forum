@@ -11,6 +11,7 @@ class Tag extends Model
     use HasFactory;
 
     protected $table = 'tag';
+    public $timestamps = false;
 
     public function Blog()
     {

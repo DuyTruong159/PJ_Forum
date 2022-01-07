@@ -58,17 +58,17 @@
                 <div class="info_user">
                     <div class="header_">
                         <div class="username">
-                            <h3>mt_binh</h3>
+                            <h3>{{$blog->User->username}}</h3>
                         </div>
                         <div class="ava_">
                             <div class="">
-                                <img src="https://itvnn.net/customavatars/avatar99_25.gif" alt="">
+                                <img src="{{$blog->User->avatar}}" width="200" height="150" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="body_">
                         <div class="nick_name">
-                            <span>Sát thủ vô tình</span>
+                            <span>{{$blog->User->nickname}}</span>
                         </div>
                         <div class="body_inner">
                             <div class="form_group">
@@ -76,7 +76,7 @@
                                     <span>Họ Tên</span>
                                 </div>
                                 <div class="right_body">
-                                    <span>Mai Thanh Bình</span>
+                                    <span>{{$blog->User->nickname}}</span>
                                 </div>
                             </div>
 
@@ -85,15 +85,7 @@
                                     <span>Tham gia ngày</span>
                                 </div>
                                 <div class="right_body">
-                                    <span>Sep 2009</span>
-                                </div>
-                            </div>
-                            <div class="form_group">
-                                <div class="left_body">
-                                    <span>Tuổi</span>
-                                </div>
-                                <div class="right_body">
-                                    <span>99</span>
+                                    <span>@php $d=date_create($blog->User->created_date); echo date_format($d, 'd/m/Y'); @endphp</span>
                                 </div>
                             </div>
                             <div class="form_group">
@@ -101,31 +93,7 @@
                                     <span>giới tính </span>
                                 </div>
                                 <div class="right_body">
-                                    <span>A</span>
-                                </div>
-                            </div>
-                            <div class="form_group">
-                                <div class="left_body">
-                                    <span>Họ Tên</span>
-                                </div>
-                                <div class="right_body">
-                                    <span>Mai Thanh Bình</span>
-                                </div>
-                            </div>
-                            <div class="form_group">
-                                <div class="left_body">
-                                    <span>Họ Tên</span>
-                                </div>
-                                <div class="right_body">
-                                    <span>Mai Thanh Bình</span>
-                                </div>
-                            </div>
-                            <div class="form_group">
-                                <div class="left_body">
-                                    <span>Họ Tên</span>
-                                </div>
-                                <div class="right_body">
-                                    <span>Mai Thanh Bình</span>
+                                    <span>{{$blog->User->sex}}</span>
                                 </div>
                             </div>
                         </div>
@@ -200,17 +168,17 @@
                     <div class="info_user">
                         <div class="header_">
                             <div class="username">
-                                <h3>mt_binh</h3>
+                                <h3>{{$c->User->username}}</h3>
                             </div>
                             <div class="ava_">
                                 <div class="">
-                                    <img src="https://itvnn.net/customavatars/avatar99_25.gif" alt="">
+                                    <img src="{{$c->User->avatar}}" width="200" height="150" alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="body_">
                             <div class="nick_name">
-                                <span>Sát thủ vô tình</span>
+                                <span>{{$c->User->nickname}}</span>
                             </div>
                             <div class="body_inner">
                                 <div class="form_group">
@@ -218,7 +186,7 @@
                                         <span>Họ Tên</span>
                                     </div>
                                     <div class="right_body">
-                                        <span>Mai Thanh Bình</span>
+                                        <span>{{$c->User->username}}</span>
                                     </div>
                                 </div>
 
@@ -227,15 +195,7 @@
                                         <span>Tham gia ngày</span>
                                     </div>
                                     <div class="right_body">
-                                        <span>Sep 2009</span>
-                                    </div>
-                                </div>
-                                <div class="form_group">
-                                    <div class="left_body">
-                                        <span>Tuổi</span>
-                                    </div>
-                                    <div class="right_body">
-                                        <span>99</span>
+                                        <span>@php $d=date_create($c->User->created_date); echo date_format($d, 'd/m/Y'); @endphp</span>
                                     </div>
                                 </div>
                                 <div class="form_group">
@@ -243,31 +203,7 @@
                                         <span>giới tính </span>
                                     </div>
                                     <div class="right_body">
-                                        <span>A</span>
-                                    </div>
-                                </div>
-                                <div class="form_group">
-                                    <div class="left_body">
-                                        <span>Họ Tên</span>
-                                    </div>
-                                    <div class="right_body">
-                                        <span>Mai Thanh Bình</span>
-                                    </div>
-                                </div>
-                                <div class="form_group">
-                                    <div class="left_body">
-                                        <span>Họ Tên</span>
-                                    </div>
-                                    <div class="right_body">
-                                        <span>Mai Thanh Bình</span>
-                                    </div>
-                                </div>
-                                <div class="form_group">
-                                    <div class="left_body">
-                                        <span>Họ Tên</span>
-                                    </div>
-                                    <div class="right_body">
-                                        <span>Mai Thanh Bình</span>
+                                        <span>{{$c->User->sex}}</span>
                                     </div>
                                 </div>
                             </div>

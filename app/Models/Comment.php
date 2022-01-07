@@ -18,8 +18,8 @@ class Comment extends Model
         return $this -> belongsTo(Blog::class, 'BlogId', 'Id');
     }
 
-    public function Comment()
+    public function User()
     {
-        return $this -> belongsTo(Comment::class, 'UserId', 'Id');
+        return $this -> belongsTo(User::class, 'UserId', 'Id');
     }
 }

@@ -22,6 +22,71 @@
 
     <script src="/assert/js/function.js"></script>
 </head>
+
+<style>
+.loginarea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropbtn {
+    font-weight: 600;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+.dropbtn::after{
+    content: '';
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+}
+
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 4;
+    bottom: -80px;
+    visibility: hidden;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;visibility: inherit;}
+
+.header-top .avatar_{
+    height: 36px;
+    width: 36px;
+    display: flex;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+}
+</style>
+
 <body class="grey lighten-4">
 
     @if (session('status')=='Empty')
@@ -45,6 +110,20 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
+    @elseif (session('status')=='Unauthenticate')
+    <div class="alert alert-danger alert-dismissible fade show position-fixed" style="left:1100px; top:30px; z-index: 2;" role="alert">
+        Bạn phải đăng nhập !!!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @elseif (session('status')=='UnauthenAdmin')
+    <div class="alert alert-danger alert-dismissible fade show position-fixed" style="left:1100px; top:30px; z-index: 2;" role="alert">
+        Bạn không có quyền đăng nhập !!!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     @endif
 
     <header class="header-top" id="header-top">
@@ -53,17 +132,16 @@
                 <div class="logo-wrapper">
                     <a href="/"><span>Chao mung</span></a>
                 </div>
-                @if(Auth::check())
+                @if(Cookie::get('login'))
                 <div class="d-flex align-items-center " >
                     <div class="avatar_">
-                        <img src="" alt="">
+                        <img src="{{Cookie::get('avatar')}}" alt="">
                     </div>
                     <div class="dropdown">
-                        <span class="dropbtn">Admin</span>
+                        <span class="dropbtn">{{Cookie::get('nickname')}}</span>
                         <div class="dropdown-content">
                             <a href="#">Profile</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <a href="{{route('logout')}}">Logout</a>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,53 @@
 @extends('admin.layoutAdmin')
 @section('contentAdmin')
 
+<style>
+    .modal-confirm{
+    z-index: 100;
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 150px;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.model-box{
+    margin: auto;
+    background-color: #fff;
+    position: relative;
+    padding: 15px;
+    outline: 0;
+    width: 600px;
+    border-radius: 20px;
+}
+.box-footer{
+    text-align: right;
+}
+.btn-wrapper{
+    display: inline-block;
+}
+.btn-wrapper button{
+    width: auto;
+    display: inline;
+}
+.acept-btn{
+	background-color: #4972dc;
+	color: white;
+}
+
+</style>
+
+<div class="alert alert-success alert-dismissible fade show position-fixed" style="left:1100px; top:80px; z-index: 2;display: none;" role="alert">
+    Xóa thành công!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
@@ -67,13 +114,13 @@
                     </thead>
                     <tbody id="all">
                         @foreach ($blog as $b)
-                        <tr>
+                        <tr id="row-{{$b->Id}}">
                             <td scope="row">{{$b->Id}}</td>
                             <td>{{$b->Title}}</td>
-                            <td>{{$b->Content}}</td>
+                            <td>@php echo html_entity_decode($b->Content) @endphp</td>
                             <td>@php echo $b->Active==1 ? '<i class="fa fa-check-circle-o" style="color: green" aria-hidden="true"></i>' : '<i class="fa fa-ban" style="color: red" aria-hidden="true"></i>' @endphp</td>
                             <td>{{$b->Tag->Name}}</td>
-                            <td></td>
+                            <td>{{$b->User->nickname}}</td>
                             <td>
                                 <a href="{{route('blogUpdateA', ['blogId'=>$b->Id])}}" type="button">
                                     <span class="material-icons-outlined">
@@ -97,8 +144,8 @@
                                             <div class="box-footer">
                                                 <div class="btn-wrapper">
                                                     <!-- truyền id của mỗi blog dô đây -->
-                                                    <button type="submit" class="acept-btn form-control">Đồng ý</button>
-                                                    <button type="submit" class="close-btn form-control">Hủy bỏ</button>
+                                                    <button type="button" class="acept-btn form-control" onclick="remove({{$b->Id}})">Đồng ý</button>
+                                                    <button type="button" class="close-btn form-control">Hủy bỏ</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -142,6 +189,24 @@
                 tr[i].style.display = "none";
             }
         }
+    }
+
+    function remove(id) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/blog/delete/'+id,
+            data: {
+                "id": id,
+                "_token": "{{ csrf_token() }}",
+            },
+            success: function(data) {
+                $(`#row-${id}`).css('display', 'none');
+                $('.alert-dismissible').css('display', '');
+                $('.alert-dismissible').fadeTo(2000, 500).slideUp(500, function() {
+                    $(".alert-dismissible").slideUp(500);
+                });
+            },
+        });
     }
 </script>
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class BlogController extends Controller
 {
@@ -29,6 +31,7 @@ class BlogController extends Controller
         $blog -> TagId = $re -> input('tag');
         $blog -> Title = $re -> input('title');
         $blog -> Content = $re -> input('post_content');
+        $blog -> UserId = Cookie::get('id');
         if($re -> input('is_public')=="1")
         {
             $blog -> Active = $re -> input('is_public');
@@ -74,6 +77,7 @@ class BlogController extends Controller
         $blog -> TagId = $re -> input('tag');
         $blog -> Title = $re -> input('title');
         $blog -> Content = $re -> input('post_content');
+        $blog -> UserId = Cookie::get('id');
         if($re -> input('is_public')=="1")
         {
             $blog -> Active = $re -> input('is_public');
@@ -122,5 +126,125 @@ class BlogController extends Controller
         ]);
 
         return redirect(route('blogA')) -> with('status', 'Updated');
+    }
+
+    public function delete($id)
+    {
+        Blog::find($id) -> Comment() -> delete();
+        Blog::where('Id', $id) -> delete();
+    }
+
+    public function chart()
+    {
+        $blog = Blog::whereYear('Created_date', '=', now()->year) -> get();
+        $data = [];
+        $jan = 0; $feb = 0; $mar = 0; $apr = 0; $may = 0; $jun = 0;
+        $jul = 0; $aug = 0; $sep = 0; $oct = 0; $nov = 0; $dec = 0;
+
+        foreach ($blog as $b)
+        {
+            $month = Carbon::parse($b->Created_date)->format('m');
+
+            switch($month)
+            {
+                case('1'):
+                    $jan++;
+                    break;
+                case('2'):
+                    $feb++;
+                    break;
+                case('3'):
+                    $mar++;
+                    break;
+                case('4'):
+                    $apr++;
+                    break;
+                case('5'):
+                    $may++;
+                    break;
+                case('6'):
+                    $jun++;
+                    break;
+                case('7'):
+                    $jul++;
+                    break;
+                case('8'):
+                    $aug++;
+                    break;
+                case('9'):
+                    $sep++;
+                    break;
+                case('10'):
+                    $oct++;
+                    break;
+                case('11'):
+                    $nov++;
+                    break;
+                case('12'):
+                    $dec++;
+                    break;
+            }
+        }
+
+        array_push($data, $jan, $feb, $mar, $apr, $may, $jun, $jul, $aug, $sep, $oct, $nov, $dec);
+
+        return view('admin.chartAdmin', compact('data'));
+    }
+
+    public function chartFormat(Request $re)
+    {
+        $blog = Blog::whereYear('Created_date', '=', $re->year) -> get();
+        $data = [];
+        $jan = 0; $feb = 0; $mar = 0; $apr = 0; $may = 0; $jun = 0;
+        $jul = 0; $aug = 0; $sep = 0; $oct = 0; $nov = 0; $dec = 0;
+
+        foreach ($blog as $b)
+        {
+            $month = Carbon::parse($b->Created_date)->format('m');
+
+            switch($month)
+            {
+                case('1'):
+                    $jan++;
+                    break;
+                case('2'):
+                    $feb++;
+                    break;
+                case('3'):
+                    $mar++;
+                    break;
+                case('4'):
+                    $apr++;
+                    break;
+                case('5'):
+                    $may++;
+                    break;
+                case('6'):
+                    $jun++;
+                    break;
+                case('7'):
+                    $jul++;
+                    break;
+                case('8'):
+                    $aug++;
+                    break;
+                case('9'):
+                    $sep++;
+                    break;
+                case('10'):
+                    $oct++;
+                    break;
+                case('11'):
+                    $nov++;
+                    break;
+                case('12'):
+                    $dec++;
+                    break;
+            }
+        }
+
+        array_push($data, $jan, $feb, $mar, $apr, $may, $jun, $jul, $aug, $sep, $oct, $nov, $dec);
+
+        return view('admin.chartAdmin', compact('data'));
     }
 }

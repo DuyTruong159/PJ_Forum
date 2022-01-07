@@ -38,4 +38,51 @@ class TagController extends Controller
         $tag = Tag::orderByDesc('Created_date')->paginate(10);
         return view('admin.tagAdmin', compact('tag'));
     }
+
+    public function insert(Request $re)
+    {
+        $validated = $re->validate([
+            'tag' => 'required'
+        ],
+        [
+            'tag.required' => 'Tiêu đề bài viết bị trống!!!'
+        ]);
+
+        $tag = new Tag;
+        $tag->Name = $re->input('tag');
+        $tag->save();
+
+        return redirect(route('tagA')) -> with('status', 'Success');
+    }
+
+    public function update(Request $re, $id)
+    {
+        $validated = $re->validate([
+            'tag' => 'required'
+        ],
+        [
+            'tag.required' => 'Tiêu đề bài viết bị trống!!!'
+        ]);
+
+        Tag::where('Id', $id) -> update([
+            'Name' => $re -> input('tag')
+        ]);
+
+        return redirect(route('tagA')) -> with('status', 'Updated');
+    }
+
+    public function delete($id)
+    {
+        $blog = Tag::find($id) -> Blog;
+
+        foreach ($blog as $b) {
+            $b -> Comment() -> delete();
+        }
+
+        Tag::find($id) -> Blog() -> delete();
+
+        Tag::where('Id', $id) -> delete();
+
+        return 'success';
+    }
 }

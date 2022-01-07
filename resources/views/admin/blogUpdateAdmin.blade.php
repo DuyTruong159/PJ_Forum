@@ -60,6 +60,12 @@
                 <form method="POST" action="{{route('blogUpdateAdone', ['blogId'=>$blog->Id])}}">
                     {{ csrf_field() }}
                     <div class="form-group row">
+                        <label for="user2" class="col-sm-12 col-md-2 col-form-label">Người Đăng:</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input type="text" value="{{$blog->User->nickname}}" id="user2" disabled class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="title" class="col-sm-12 col-md-2 col-form-label">Tiêu đề bài viết:<i class="text-danger">*</i></label>
                         <div class="col-sm-12 col-md-10">
                             <input class="form-control" name="title" type="text" value="{{$blog->Title}}">
