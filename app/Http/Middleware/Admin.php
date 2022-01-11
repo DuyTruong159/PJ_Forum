@@ -18,7 +18,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Cookie::get('role')=="Admin")
+        if(Cookie::get('role')=="Admin" || Cookie::get('role')=="Staff")
         {
             return $next($request);
         }

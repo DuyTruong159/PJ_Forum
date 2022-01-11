@@ -135,7 +135,7 @@
                 @if(Cookie::get('login'))
                 <div class="d-flex align-items-center " >
                     <div class="avatar_">
-                        <img src="{{Cookie::get('avatar')}}" alt="">
+                        <img src="/{{Cookie::get('avatar')}}" alt="">
                     </div>
                     <div class="dropdown">
                         <span class="dropbtn">{{Cookie::get('nickname')}}</span>
@@ -212,9 +212,11 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="/contact">Contact</a>
                                     </li>
+                                    @if(!Cookie::get('login'))
                                     <li class="nav-item">
                                         <a class="nav-link" href="/register">Register</a>
                                     </li>
+                                    @endif
                                 </ul>
                                 </div>
                             </nav>

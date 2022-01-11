@@ -114,16 +114,10 @@
 				<div class="dropdown">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="{{Cookie::get('avatar')}}">
+							<img src="/{{Cookie::get('avatar')}}">
 						</span>
 						<span class="user-name">{{Cookie::get('nickname')}}</span>
 					</a>
-					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-						<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
-						<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
-						<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-						<a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -228,7 +222,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="admin_user.php" class="dropdown-toggle no-arrow">
+						<a href="/admin/user" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-calendar1"></span><span class="mtext">User</span>
 						</a>
 					</li>

@@ -62,7 +62,7 @@
                         </div>
                         <div class="ava_">
                             <div class="">
-                                <img src="{{$blog->User->avatar}}" width="200" height="150" alt="">
+                                <img src="/{{$blog->User->avatar}}" width="200" height="150" alt="">
                             </div>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                             </div>
                             <div class="ava_">
                                 <div class="">
-                                    <img src="{{$c->User->avatar}}" width="200" height="150" alt="">
+                                    <img src="/{{$c->User->avatar}}" width="200" height="150" alt="">
                                 </div>
                             </div>
                         </div>

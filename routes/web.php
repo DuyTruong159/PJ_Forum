@@ -39,8 +39,10 @@ Route::middleware(['admin','login']) -> group(function () {
     Route::get('/admin/blog/delete/{blogId}', ['as'=>'blogAdelete', 'uses'=>'BlogController@delete']);
     Route::get('/admin/comment/delete/{commentId}', ['as'=>'commentAdelete', 'uses'=>'CommentController@delete']);
     Route::get('/admin/tag/delete/{tagId}', ['as'=>'tagAdelete', 'uses'=>'TagController@delete']);
+    Route::get('/admin/user/delete/{userId}', ['as'=>'userAdelete', 'uses'=>'UserController@delete']);
     Route::get('/admin', ['as'=>'chartA', 'uses'=>'BlogController@chart']);
     Route::get('/adminChart', ['as'=>'chartFormat', 'uses'=>'BlogController@chartFormat']);
+    Route::get('/admin/user', ['as'=>'userA', 'uses'=>'UserController@userA']);
 
     Route::post('/admin/blog-post', ['as'=>'blogPostAdone', 'uses'=>'BlogController@blogInsert']);
     Route::post('/admin/blog-update/{blogId}', ['as'=>'blogUpdateAdone', 'uses'=>'BlogController@blogUpdateDone']);
@@ -48,4 +50,6 @@ Route::middleware(['admin','login']) -> group(function () {
     Route::post('/admin/comment/update/{commentId}', ['as'=>'commentUpdateAdone', 'uses'=>'CommentController@update']);
     Route::post('/admin/tag', ['as'=>'tagInsertAdone', 'uses'=>'TagController@insert']);
     Route::post('/admin/tag/update/{tagId}', ['as'=>'tagUpdateAdone', 'uses'=>'TagController@update']);
+    Route::post('/admin/user', ['as'=>'userInsertAdone', 'uses'=>'UserController@userAinsert']);
+    Route::post('/admin/user/update/{userId}', ['as'=>'userUpdateAdone', 'uses'=>'UserController@userAupdate']);
 });
