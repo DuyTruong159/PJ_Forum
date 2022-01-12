@@ -184,6 +184,14 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        $user = User::find($id) -> Blog;
+
+        foreach ($user as $u) {
+            $u -> Comment() -> delete();
+        }
+
+        User::find($id) -> Blog() -> delete();
+
         User::where('Id', $id) -> delete();
 
         return 'success';

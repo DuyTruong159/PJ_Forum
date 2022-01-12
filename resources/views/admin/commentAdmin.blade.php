@@ -147,7 +147,7 @@
                                             <div class="box-body mb-2">
                                                 <div class="form-group">
                                                     <label for="user2" class="font-20" style="font-weight: 600;">Người Đăng:</label>
-                                                    <input type="text" value="Admin" id="user2-{{$c->Id}}" disabled class="form-control">
+                                                    <input type="text" id="user2-{{$c->Id}}" disabled class="form-control">
                                                 </div>
                                                     <div class="form-group">
                                                     <label for="tag-select2" class="font-20" style="font-weight: 600;">Chủ đề:</label>
@@ -218,7 +218,7 @@
                             <div class="box-body mb-2">
                                 <div class="form-group">
                                     <label for="user2" class="font-20" style="font-weight: 600;">Người Đăng</label>
-                                    <input type="text" value="Admin" id="user2" disabled class="form-control">
+                                    <input type="text" value="{{Cookie::get('nickname')}}" id="user2" disabled class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="blog" class="font-20" style="font-weight: 600;">Chủ đề:</label>

@@ -62,7 +62,7 @@
                     <div class="form-group row">
                         <label for="user2" class="col-sm-12 col-md-2 col-form-label">Người Đăng:</label>
                         <div class="col-sm-12 col-md-10">
-                            <input type="text" value="Admin" id="user2" disabled class="form-control">
+                            <input type="text" value="{{Cookie::get('nickname')}}" id="user2" disabled class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
