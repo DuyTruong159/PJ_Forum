@@ -54,6 +54,36 @@ class BlogController extends Controller
         return view('search', compact('blog'));
     }
 
+    public function update(Request $re, $id)
+    {
+        $validated = $re->validate([
+            'title' => 'required',
+            'post_content' => 'required'
+        ],
+        [
+            'title.required' => 'Tiêu đề bài viết bị trống!!!',
+            'post_content.required' => 'Nội dung bị trống!!!'
+        ]);
+
+        if($re -> input('is_public')=="1")
+        {
+            $a = $re -> input('is_public');
+        }
+        else
+        {
+            $a = 0;
+        }
+
+        $blog = Blog::where('Id', $id) -> update([
+            'Title' => $re -> input('title'),
+            'Content' => $re -> input('post_content'),
+            'TagId' => $re -> input('tag'),
+            'Active' => $a
+        ]);
+
+        return redirect(route('profile')) -> with('status', 'Updated');
+    }
+
 //-----------------BackEnd-----------------//
 
     public function blogAll()

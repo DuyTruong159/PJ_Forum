@@ -28,295 +28,45 @@
             </div>
             <div class="body_ ">
                 <div class="left border_db p-2">
-                    <select class="filter_option">
-                        <option>Thành viên mới nhất</option>
-                        <option>Thành viên mới nhất</option>
-                        <option>Thành viên mới nhất</option>
-                        <option>Thành viên mới nhất</option>
-                    </select>
                     <div class="filter_">
                         <ul>
+                            @foreach ($blogcount as $index => $b)
                             <li class="item_">
                                 <div class="">
-                                    <span class="stt">1</span>
-                                    <span>diemmy</span>
+                                    <span class="stt">{{$index+1}}</span>
+                                    @foreach ($user as $u)
+                                    @if ($u->Id==$b->UserId)
+                                    <span>{{$u->nickname}}</span>
+                                    @endif
+                                    @endforeach
+
                                 </div>
                                 <div class="filter_result">
-                                    4000
+                                    {{$b->countBlog}}
                                 </div>
                             </li>
-                            <li class="item_">
-                                <div class="">
-                                    <span class="stt">1</span>
-                                    <span>diemmy</span>
-                                </div>
-                                <div class="filter_result">
-                                    4000
-                                </div>
-                            </li>
-                            <li class="item_">
-                                <div class="">
-                                    <span class="stt">1</span>
-                                    <span>diemmy</span>
-                                </div>
-                                <div class="filter_result">
-                                    4000
-                                </div>
-                            </li>
-                            <li class="item_">
-                                <div class="">
-                                    <span class="stt">1</span>
-                                    <span>diemmy</span>
-                                </div>
-                                <div class="filter_result">
-                                    4000
-                                </div>
-                            </li>
-                            <li class="item_">
-                                <div class="">
-                                    <span class="stt">1</span>
-                                    <span>diemmy</span>
-                                </div>
-                                <div class="filter_result">
-                                    4000
-                                </div>
-                            </li>
-                            <li class="item_">
-                                <div class="">
-                                    <span class="stt">1</span>
-                                    <span>diemmy</span>
-                                </div>
-                                <div class="filter_result">
-                                    4000
-                                </div>
-                            </li>
-                            <li class="item_">
-                                <div class="">
-                                    <span class="stt">1</span>
-                                    <span>diemmy</span>
-                                </div>
-                                <div class="filter_result">
-                                    4000
-                                </div>
-                            </li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
-                <div class="right border_db">
+                <div class="right border_db  p-1">
                     <div class="filter_post">
-                        <div class="tab">
-                            <button class="tablinks active" onclick="openCity(event, 'London')">London</button>
-                            <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-                            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-                        </div>
-
                         <!-- Tab content -->
                         <div id="London" class="tabcontent" style="display: block;">
                             <div class="filter_">
                                 <ul class="">
+                                    @foreach ($blog as $b)
                                     <li class="">
                                         <div class="">
                                             <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
+                                            <span class="name_post"><a href="{{route('blogDetail', ['blogId'=>$b->Id])}}">{{$b->Title}}</a></span>
                                         </div>
                                         <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
+                                            <span><a href="javascript:;">{{Carbon\Carbon::parse($b->Created_date)->diffForHumans()}}</a></span>
                                         </div>
                                     </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div id="Paris" class="tabcontent">
-                        <div class="filter_">
-                                <ul class="">
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div id="Tokyo" class="tabcontent">
-                        <div class="filter_">
-                                <ul class="">
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
-                                    <li class="">
-                                        <div class="">
-                                            <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/post_new.gif" style="padding-right: 5px;" alt="">
-                                            <span class="name_post"><a href="/">àgahdhkgsdlgdsgkjdhgjldhglhglahfljhfola</a></span>
-                                        </div>
-                                        <div class="filter_result">
-                                            <span><a href="/">2021</a></span>
-                                        </div>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

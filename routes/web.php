@@ -19,12 +19,14 @@ Route::get('/blog-post', ['as'=>'blogPost', 'uses'=>'TagController@blogPost']);
 Route::get('/search', ['as'=>'blogSearch', 'uses'=>'BlogController@search']);
 Route::get('/tieude/{tagId}', ['as'=>'tagDetail', 'uses'=>'TagController@TagDetail']);
 Route::get('/logout', ['as'=>'logout', 'uses'=>'UserController@logout']) -> middleware('login');
+Route::get('/profile', ['as'=>'profile', 'uses'=>'UserController@profile']) -> middleware('login');
 
 Route::post('/blog-post', ['as'=>'blogpostdone', 'uses'=>'BlogController@insert']) -> middleware('login');
 Route::post('/contact', ['as'=>'contactmail', 'uses'=>'MailController@sendMail']);
 Route::post('/blog-detail/{blogId}', ['as'=>'commentsuccess', 'uses'=>'CommentController@insert']) -> middleware('login');
 Route::post('/register', ['as'=>'registerdone', 'uses'=>'UserController@insert']);
 Route::post('/', ['as'=>'login', 'uses'=>'UserController@login']);
+Route::post('/profile/updateBlog/{blogId}', ['as'=>'updateBlogProfile', 'uses'=>'BlogController@update']) -> middleware('login');
 
 Route::view('/register', 'register');
 Route::view('/contact', 'contact');

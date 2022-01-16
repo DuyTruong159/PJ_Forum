@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -71,6 +72,9 @@ class UserController extends Controller
             Cookie::queue('id', Auth::user()->Id, 60);
             Cookie::queue('nickname', Auth::user()->nickname, 60);
             Cookie::queue('avatar', Auth::user()->avatar, 60);
+            Cookie::queue('email', Auth::user()->email, 60);
+            Cookie::queue('sex', Auth::user()->sex, 60);
+            Cookie::queue('date', Auth::user()->created_date, 60);
             return redirect(route('home')) -> with('status', 'Success');
         }
 
@@ -84,7 +88,18 @@ class UserController extends Controller
         Cookie::queue(Cookie::forget('id'));
         Cookie::queue(Cookie::forget('nickname'));
         Cookie::queue(Cookie::forget('avatar'));
+        Cookie::queue(Cookie::forget('email'));
+        Cookie::queue(Cookie::forget('sex'));
+        Cookie::queue(Cookie::forget('date'));
         return redirect(route('home'));
+    }
+
+    public function profile()
+    {
+        $blog = User::find(Cookie::get('id')) -> Blog() -> orderByDesc('Created_date') -> paginate(10);
+        $tag = Tag::all();
+
+        return view('profile', compact('blog','tag'));
     }
 
 //-----------------Backend----------------//

@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TagController extends Controller
 {
     public function index()
     {
         $tag = Tag::all() -> random(5);
-        return view('index', compact('tag'));
+        $blogcount = Blog::select(DB::raw('count(*) as countBlog, UserId')) -> groupBy('UserId') -> orderByDesc('countBlog') -> limit(7) -> get();
+        $user = User::all();
+        $blog = Blog::orderByDesc('Created_date') -> limit(7) -> get();
+
+        return view('index', compact('tag', 'blogcount', 'user', 'blog'));
     }
 
     public function blogPost()

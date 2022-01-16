@@ -13,6 +13,8 @@
 
     <link href="/assert/css/style.css" rel="stylesheet">
 
+    <script src="https://use.fontawesome.com/f697b36b34.js"></script>
+
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -140,7 +142,7 @@
                     <div class="dropdown">
                         <span class="dropbtn">{{Cookie::get('nickname')}}</span>
                         <div class="dropdown-content">
-                            <a href="#">Profile</a>
+                            <a href="/profile">Profile</a>
                             <a href="{{route('logout')}}">Logout</a>
                         </div>
                     </div>
@@ -198,7 +200,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <div class="dropdown-inner">
-                                                <div class="dropdown-content row">
+                                                <div class="dropdown-menu-content row">
                                                     @foreach ($tagHeader as $t)
                                                     <div class="col-md-3">
                                                         <a href="{{route('tagDetail', ['tagId'=>$t->Id])}}">{{$t->Name}}</a>
@@ -257,7 +259,6 @@
                                         </span>
                                     </button>
                                 </div>
-                                <a href="/search" class="d-block text-right">Kiếm Chi Tiết</a>
                             </form>
                         </div>
                     </div>
