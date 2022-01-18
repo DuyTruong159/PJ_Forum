@@ -101,7 +101,7 @@
                     <ul>
                         @foreach ($t->Blog as $b)
                         @if($b->Active==1)
-                        <li>
+                        <li style="margin-bottom: 10px; margin-top: 10px;">
                             <div class="icon_">
                                 <img src="https://itvnn.net/images/styles/ShinyBlue/statusicon/forum_new-48.png" alt="">
                             </div>
@@ -109,32 +109,20 @@
                                 <div class="info_inner">
                                     <div class="src_list_post">
                                         <a href="{{route('blogDetail', ['blogId'=>$b->Id])}}">{{$b->Title}}</a>
-                                        <span class="viewing_">(6 viewing)</span>
+                                        <span class="viewing_">({{$b->Comment->Count()}} viewing)</span>
                                     </div>
                                     <div class="description_">
                                         <span>Tin tức về CNTT ở Việt Nam và thế giới.</span>
                                     </div>
                                 </div>
-                                <div class="count_ text-right">
-                                    <div class="count_title">
-                                        Đề tài: 1,599
-                                    </div>
-                                    <div class="count_post">
-                                        Bài Gửi: 1,599
-                                    </div>
-                                </div>
                             </div>
                             <div></div>
                             <div class="latest_post">
-                                <div class="name_">
-                                    <img src="https://itvnn.net/images/icons/icon.gif" alt="">
-                                    <a href="" class="" >AMD hợp tác MediaTek...</a>
-                                </div>
                                 <div class="author_">
-                                    <span>by zokoko</span>
+                                    <span>by <a href="javascript:;">{{$b->User->nickname}}</a></span>
                                 </div>
                                 <div class="created_date">
-                                    <span>19-11-2021, 05:34 PM</span>
+                                    <span>@php $d=date_create($b->Created_date); echo date_format($d, 'd/m/Y h:i A'); @endphp</span>
                                 </div>
                             </div>
                         </li>
@@ -154,23 +142,11 @@
                                         <span>Tin tức về CNTT ở Việt Nam và thế giới.</span>
                                     </div>
                                 </div>
-                                <div class="count_ text-right">
-                                    <div class="count_title">
-                                        Đề tài: 1,599
-                                    </div>
-                                    <div class="count_post">
-                                        Bài Gửi: 1,599
-                                    </div>
-                                </div>
                             </div>
                             <div></div>
                             <div class="latest_post">
-                                <div class="name_">
-                                    <img src="https://itvnn.net/images/icons/icon.gif" alt="">
-                                    <a href="" class="" >AMD hợp tác MediaTek...</a>
-                                </div>
                                 <div class="author_">
-                                    <span>by zokoko</span>
+                                    <span>by <a href="javascript:;">zokoko</a></span>
                                 </div>
                                 <div class="created_date">
                                     <span>19-11-2021, 05:34 PM</span>

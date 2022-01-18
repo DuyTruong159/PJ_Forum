@@ -13,7 +13,8 @@ class BlogController extends Controller
     public function blogDetail($id)
     {
         $blog = Blog::find($id);
-        return view('blogDetail', compact('blog'));
+        $tag = Tag::all();
+        return view('blogDetail', compact('blog', 'tag'));
     }
 
     public function insert(Request $re)
@@ -82,6 +83,36 @@ class BlogController extends Controller
         ]);
 
         return redirect(route('profile')) -> with('status', 'Updated');
+    }
+
+    public function blogDetailUpdate(Request $re, $id)
+    {
+        $validated = $re->validate([
+            'title' => 'required',
+            'post_content' => 'required'
+        ],
+        [
+            'title.required' => 'Tiêu đề bài viết bị trống!!!',
+            'post_content.required' => 'Nội dung bị trống!!!'
+        ]);
+
+        if($re -> input('is_public')=="1")
+        {
+            $a = $re -> input('is_public');
+        }
+        else
+        {
+            $a = 0;
+        }
+
+        $blog = Blog::where('Id', $id) -> update([
+            'Title' => $re -> input('title'),
+            'Content' => $re -> input('post_content'),
+            'TagId' => $re -> input('tag'),
+            'Active' => $a
+        ]);
+
+        return redirect(route('blogDetail', ['blogId'=>$id])) -> with('status', 'BlogUpdated');
     }
 
 //-----------------BackEnd-----------------//

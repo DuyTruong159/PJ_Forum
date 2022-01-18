@@ -66,7 +66,6 @@ class UserController extends Controller
 
         if(Auth::attempt(['username' => $re->input('username'), 'password' => $re->input('password')]))
         {
-            // dd(Auth::user()->Id);
             Cookie::queue('login', Auth::check(), 60);
             Cookie::queue('role', Auth::user()->role, 60);
             Cookie::queue('id', Auth::user()->Id, 60);
@@ -75,6 +74,9 @@ class UserController extends Controller
             Cookie::queue('email', Auth::user()->email, 60);
             Cookie::queue('sex', Auth::user()->sex, 60);
             Cookie::queue('date', Auth::user()->created_date, 60);
+            Cookie::queue('username', Auth::user()->username, 60);
+            Cookie::queue('password', Auth::user()->password_confirm, 60);
+
             return redirect(route('home')) -> with('status', 'Success');
         }
 
@@ -100,6 +102,71 @@ class UserController extends Controller
         $tag = Tag::all();
 
         return view('profile', compact('blog','tag'));
+    }
+
+    public function userUpdateProfile(Request $re, $id)
+    {
+        $validated = $re -> validate([
+            'nickname' => 'required',
+            'email' => 'required',
+            'username' => 'required'
+        ],
+        [
+            'nickname.required' => 'Biệt danh không bỏ trống!!',
+            'email.required' => 'Email không bỏ trống!!',
+            'username.required' => 'Username không bỏ trống!!'
+        ]);
+
+        if($re -> hasFile('avatar'))
+        {
+            $file = $re -> file('avatar');
+            error_log($file);
+            $avatar = $file -> move('assert/img', $file->getClientOriginalName());
+        }
+        else
+        {
+            $avatar = User::find($id) -> avatar;
+        }
+
+        User::where('Id', $id) -> update([
+            'username' => $re -> input('username'),
+            'nickname' => $re -> input('nickname'),
+            'email' => $re -> input('email'),
+            'avatar' => $avatar,
+            'sex' => $re -> sex
+        ]);
+
+        return redirect(route('profile')) -> with('status', 'UpdatedUser');
+    }
+
+    public function changePassword(Request $re, $id)
+    {
+        $validated = $re -> validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required'
+        ],
+        [
+            'old_password.required' => 'Cần xác nhận mật khẩu cũ!!',
+            'new_password.required' => 'Yêu cầu nhập mật khẩu mới!!',
+            'confirm_password.required' => 'Cần xác nhận mật khẩu mới!!'
+        ]);
+
+        if($re -> input('old_password') != Cookie::get('password'))
+        {
+            return redirect(route('profile')) -> with('status', 'wrongPassword');
+        }
+        elseif($re -> input('new_password') != $re -> input('confirm_password'))
+        {
+            return redirect(route('profile')) -> with('status', 'wrongConfirm');
+        }
+
+        User::where('Id', $id) -> update([
+            'password_confirm' => $re -> input('new_password'),
+            'password' => bcrypt($re -> input('new_password'))
+        ]);
+
+        return redirect(route('profile')) -> with('status', 'changeSuccess');
     }
 
 //-----------------Backend----------------//

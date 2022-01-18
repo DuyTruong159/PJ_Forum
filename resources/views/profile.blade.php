@@ -61,7 +61,7 @@
 }
 </style>
 
-<div class="alert alert-success alert-dismissible fade show position-fixed" style="left:1100px; top:80px; z-index: 2;display: none;" role="alert">
+<div class="alert alert-success alert-dismissible fade show position-fixed" style="left:1100px; top:80px; z-index: 2;display: none" role="alert">
     Xóa thành công!!
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -81,6 +81,9 @@
                         <button class="update_ btn btn-primary" >
                             Cập Nhật
                         </button>
+                        <button class="update_ btn btn-primary" >
+                            Đổi mật khẩu
+                        </button>
                         <div class="modal-update">
                             <div class="model-box">
                                 <div class="box-wrapper">
@@ -88,44 +91,78 @@
                                         <span id="close1"  class="close close-update"><i class="fas fa-times"></i></span>
                                     </h3>
                                     <div class="box-body mb-2">
-                                        <form method="POST" >
-                                            <h4 style="text-transform: uppercase;">User Updated</h4>
+                                        <form method="post" action="{{route('updateUserProfile', ['userId'=>Cookie::get('id')])}}">
+                                            {{ csrf_field() }}
+                                            <h4 style="text-transform: uppercase;">Infor User</h4>
                                             <div class="form-group row">
-                                                <label for="Nickname" class="col-sm-12 col-md-2 col-form-label">Nickname:<i class="text-danger">*</i></label>
+                                                <label for="nickname" class="col-sm-12 col-md-2 col-form-label">Nickname:<i class="text-danger">*</i></label>
                                                 <div class="col-sm-12 col-md-10">
-                                                    <input class="form-control" name="Nickname" type="text" value="" >
+                                                    <input class="form-control" name="nickname" type="text" value="{{Cookie::get('nickname')}}" >
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="Email" class="col-sm-12 col-md-2 col-form-label">Email:</label>
+                                                <label for="email" class="col-sm-12 col-md-2 col-form-label">Email:<i class="text-danger">*</i></label>
                                                 <div class="col-sm-12 col-md-10">
-                                                    <input class="form-control" name="Email" type="email" value="" >
+                                                    <input class="form-control" name="email" type="email" value="{{Cookie::get('email')}}" >
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="Sex" class="col-sm-12 col-md-2 col-form-label">Sex:</label>
+                                                <label for="file" class="col-sm-12 col-md-2 col-form-label">Avatar:</label>
                                                 <div class="col-sm-12 col-md-10">
-                                                    <input class="form-control" name="Sex" type="text" value="" >
+                                                    <input class="form-control" name="avatar" type="file">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="Username" class="col-sm-12 col-md-2 col-form-label">Username:<i class="text-danger">*</i></label>
+                                                <label for="sex" class="col-sm-12 col-md-2 col-form-label">Sex:</label>
                                                 <div class="col-sm-12 col-md-10">
-                                                    <input class="form-control" name="Username" type="text" value="" >
+                                                    <select name="sex" class="form-control">
+                                                        <option value="Male" {{Cookie::get('sex') == 'Male' ? 'selected' : ''}}>Male</option>
+                                                        <option value="Female" {{Cookie::get('sex')=='Female' ? 'selected' : ''}} >Female</option>
+                                                        <option value="Other" {{Cookie::get('sex') == 'Other' ? 'selected' : ''}}>Other</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="Password" class="col-sm-12 col-md-2 col-form-label">Password:</label>
+                                                <label for="username" class="col-sm-12 col-md-2 col-form-label">Username:<i class="text-danger">*</i></label>
                                                 <div class="col-sm-12 col-md-10">
-                                                    <input class="form-control" name="Password" type="text" value="" >
+                                                    <input class="form-control" name="username" type="text" value="{{Cookie::get('username')}}" >
                                                 </div>
                                             </div>
+                                            <div class="form-group row justify-content-center ">
+                                                <input type="submit" name="btn_submit" value="Cập nhật" class="form-control btn_submit" style="width: 30%; background-color: #1b00ff; color: white;">
+                                            </div>
+                                        </form>
+                                    </div>
 
-
-                                            <div class="form-group row">
-                                                <label for="Sex" class="col-sm-12 col-md-2 col-form-label">Sex:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-update">
+                            <div class="model-box">
+                                <div class="box-wrapper">
+                                    <h3 class="box-header">
+                                        <span id="close1"  class="close close-update"><i class="fas fa-times"></i></span>
+                                    </h3>
+                                    <div class="box-body mb-2">
+                                        <form method="post" action="{{route('changePassword', ['userId'=>Cookie::get('id')])}}">
+                                            {{ csrf_field() }}
+                                            <h4 style="text-transform: uppercase;">Đổi mật khẩu</h4>
+                                            <div class="form-group row" >
+                                                <label for="old_password" class="col-sm-12 col-md-2 col-form-label">Old Password:<i class="text-danger">*</i></label>
                                                 <div class="col-sm-12 col-md-10">
-                                                    <input class="form-control" name="Sex" type="text" value="" >
+                                                    <input class="form-control" name="old_password" type="password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="new_password" class="col-sm-12 col-md-2 col-form-label">New Password:<i class="text-danger">*</i></label>
+                                                <div class="col-sm-12 col-md-10">
+                                                    <input class="form-control" name="new_password" type="password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="confirm_password" class="col-sm-12 col-md-2 col-form-label">Confirm Password:<i class="text-danger">*</i></label>
+                                                <div class="col-sm-12 col-md-10">
+                                                    <input class="form-control" name="confirm_password" type="password">
                                                 </div>
                                             </div>
                                             <div class="form-group row justify-content-center ">
@@ -163,6 +200,22 @@
                                 <div class="alert alert-success">
                                     Cập nhật bài viết thành công !!!
                                 </div>
+                            @elseif (session('status')=='UpdatedUser')
+                            <div class="alert alert-success">
+                                Cập nhật user thành công !!!
+                            </div>
+                            @elseif (session('status')=='changeSuccess')
+                            <div class="alert alert-success">
+                                Đổi mật khẩu thành công !!!
+                            </div>
+                            @elseif (session('status')=='wrongPassword')
+                            <div class="alert alert-danger">
+                                Mật khẩu cũ không đúng !!!
+                            </div>
+                            @elseif (session('status')=='wrongConfirm')
+                            <div class="alert alert-danger">
+                                Xác nhận mật khẩu không trùng khớp!!!
+                            </div>
                             @endif
                             <table class="table" >
                                 <thead>

@@ -28,6 +28,21 @@ class CommentController extends Controller
         return redirect(route('blogDetail', ['blogId'=>$id])) -> with('status', 'CommentSuccess');
     }
 
+    public function commentUpdate(Request $re, $blogId, $commentId)
+    {
+        $validated = $re -> validate([
+            'post_content' => 'required'
+        ],
+        [
+            'post_content.required' => 'Bình luận bị trống!!!'
+        ]);
+
+        Comment::where('Id', $commentId) -> update([
+            'Content' => $re -> input('post_content')
+        ]);
+        return redirect(route('blogDetail', ['blogId'=>$blogId])) -> with('status', 'commentUpdated');
+    }
+
 //---------------------------BackEnd--------------------//
     public function CommentA()
     {

@@ -1,5 +1,6 @@
 <?php
 
+use Aws\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,9 +25,13 @@ Route::get('/profile', ['as'=>'profile', 'uses'=>'UserController@profile']) -> m
 Route::post('/blog-post', ['as'=>'blogpostdone', 'uses'=>'BlogController@insert']) -> middleware('login');
 Route::post('/contact', ['as'=>'contactmail', 'uses'=>'MailController@sendMail']);
 Route::post('/blog-detail/{blogId}', ['as'=>'commentsuccess', 'uses'=>'CommentController@insert']) -> middleware('login');
+Route::post('/blog-detail/update-blog/{blogId}', ['as'=>'blogDetailUpdate', 'uses'=>'BlogController@blogDetailUpdate']) -> middleware('login');
+Route::post('/blog-detail/update-comment/{blogId}/{commentId}', ['as'=>'commentUpdate', 'uses'=>'CommentController@commentUpdate']) -> middleware('login');
 Route::post('/register', ['as'=>'registerdone', 'uses'=>'UserController@insert']);
 Route::post('/', ['as'=>'login', 'uses'=>'UserController@login']);
 Route::post('/profile/updateBlog/{blogId}', ['as'=>'updateBlogProfile', 'uses'=>'BlogController@update']) -> middleware('login');
+Route::post('/profile/updateUser/{userId}', ['as'=>'updateUserProfile', 'uses'=>'UserController@userUpdateProfile']) -> Middleware('login');
+Route::post('/profile/changePassword/{userId}', ['as'=>'changePassword', 'uses'=>'UserController@changePassword']) -> Middleware('login');
 
 Route::view('/register', 'register');
 Route::view('/contact', 'contact');
